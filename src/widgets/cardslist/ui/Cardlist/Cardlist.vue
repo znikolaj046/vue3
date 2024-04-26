@@ -8,6 +8,8 @@ import { cards } from '../../../../entities/cards/index'
 import { projects } from '../../../../entities/projects/index'
 import { stages } from '../../../../entities/stages/index'
 
+const props = defineProps(['modelValue']);
+console.log(props)
 const filter = ''
 
 watch(
