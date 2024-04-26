@@ -14,6 +14,7 @@ const cardsIn = ref(gatherCards(cards, projects, stages))
 const filter = defineProps(["filter"])
 const emit = defineEmits(["sorting"])
 
+
 function SortCards(cardsIn, direction) {   
   sortCards(cardsIn, direction);
 }
