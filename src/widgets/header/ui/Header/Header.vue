@@ -9,12 +9,6 @@ function onChange(event) {
     return evt
 }
 
-const emitToCardList = () => {      
-      emitEvent('onChange');
-};
-
-provide('emitToCardList', emitToCardList);
-
 </script>
 
 <template>
@@ -25,7 +19,7 @@ provide('emitToCardList', emitToCardList);
         <div class="right_head">
           <div>Проект:</div>
           <div>
-            <select @change="this.filter = onChange($event)">
+            <select @change="filter = onChange($event)">
               <option :value="project.code" :key="project.code" v-for="project in projects">
                 {{ project.name }}
               </option>
@@ -35,7 +29,7 @@ provide('emitToCardList', emitToCardList);
           <div><button class="btn">Сохранить изменения</button></div>
         </div>
       </header>
-      <Cardlist :flter="this.filter"></Cardlist>
+      <Cardlist :filter="filter"></Cardlist>
     </section>
   </main>
   <!--modal v-show="isModalVisible" @close="closeModal" /-->
