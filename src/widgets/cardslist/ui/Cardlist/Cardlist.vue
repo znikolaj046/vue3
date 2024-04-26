@@ -11,8 +11,8 @@ import { stages } from '../../../../entities/stages/index'
 const stagesIn = gatherData(stages)
 const cardsIn = ref(gatherCards(cards, projects, stages))
 
-const filter = toRef(props, 'filter')
-/*defineProps(["filter"])*/
+const props = defineProps(['filter']);
+const filter = ref(props.filter);
 
 function SortCards(cardsIn, direction) {   
   sortCards(cardsIn, direction);
