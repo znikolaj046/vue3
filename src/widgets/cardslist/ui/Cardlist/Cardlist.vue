@@ -21,7 +21,7 @@ function SortCards(cardsIn, direction) {
 }
 
 </script>
-<template>
+<template>{{filter}}
   <div class="cards">
     <div class="card" :key="stage.id" v-for="(stage, index) in stagesIn">
       <div class="station_header">
