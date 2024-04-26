@@ -11,7 +11,7 @@ import { stages } from '../../../../entities/stages/index'
 const props = defineProps(['modelValue']);
 const { filter } = toRefs(props);
 
-console.log(filter)
+console.log(props)
 
 const stagesIn = gatherData(stages)
 const cardsIn = ref(gatherCards(cards, projects, stages))
