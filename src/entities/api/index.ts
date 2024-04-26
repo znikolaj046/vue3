@@ -53,6 +53,16 @@ function setProjectFilter(stages: Array<Stage>, project: string) {
   }
 }
 
+export function sortCards(cards: Array<Cards>, direction:number){
+  console.log(direction) 
+  if (direction == 1) {
+    cards.sort(compareAsc)
+  } else {
+    cards.sort(compareDesc)
+  }  
+  return cards
+}
+
 export function gatherData(stages: Array<Stage>) {
   /**/
 

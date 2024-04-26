@@ -1,5 +1,5 @@
 <script setup>
-import { gatherData, gatherCards } from '@/entities/api'
+import { gatherData, gatherCards, sortCards } from '@/entities/api'
 import { Cardobject } from '@/widgets/cardobject'
 import { ref } from 'vue'
 import draggable from 'vuedraggable'
@@ -11,6 +11,12 @@ import { stages } from '../../../../entities/stages/index'
 const stagesIn = gatherData(stages)
 const cardsIn = ref(gatherCards(cards, projects, stages))
 
+const emit = defineEmits(["sorting"])
+
+function SortCards(index, direction) {   
+  sortCards(cardsIn[index], index, direction);
+}
+
 </script>
 <template>
   <div class="cards">
@@ -18,8 +24,8 @@ const cardsIn = ref(gatherCards(cards, projects, stages))
       <div class="station_header">
         <div>{{ stage.name }} {{ index }}</div>
         <div>
-          <a href="javascript:;;"><img src="/images/adown.svg" /></a
-          ><a href="javascript:;;"><img src="/images/aup.svg" /></a>
+          <a v-on:click="SortCards(index, -1)"><img src="/images/adown.svg" /></a
+          ><a v-on:click="SortCards(index, 1)"><img src="/images/aup.svg" /></a>
         </div>
       </div>
       <draggable
