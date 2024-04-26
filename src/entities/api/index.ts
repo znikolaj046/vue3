@@ -46,11 +46,11 @@ function compareDesc(a: Cards, b: Cards) {
   return 0
 }
 
-function setProjectFilter(stages: Array<Stage>, project: string) {
-  for (let i = 0; i < stages.length; i++) {
-    const cardsFiltered = stages[i].cards.filter(getCardProjectFilter(project))
-    console.log(cardsFiltered)
-  }
+export function setProjectFilter(cards: Array<Cards>, project: string) {
+  //for (let i = 0; i < stages.length; i++) {
+  const cardsFiltered = cards.filter(getCardProjectFilter(project))    
+  //}
+  return cardsFiltered
 }
 
 export function sortCards(cards: Array<Cards>, direction:number){

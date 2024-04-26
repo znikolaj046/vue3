@@ -1,5 +1,5 @@
 <script setup>
-import { gatherData, gatherCards, sortCards } from '@/entities/api'
+import { gatherData, gatherCards, sortCards, setProjectFilter } from '@/entities/api'
 import { Cardobject } from '@/widgets/cardobject'
 import { ref } from 'vue'
 import draggable from 'vuedraggable'
@@ -14,7 +14,6 @@ const cardsIn = ref(gatherCards(cards, projects, stages))
 const emit = defineEmits(["sorting"])
 
 function SortCards(cardsIn, direction) {   
-  console.log(cardsIn)
   sortCards(cardsIn, direction);
 }
 
