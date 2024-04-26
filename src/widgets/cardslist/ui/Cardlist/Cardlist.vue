@@ -9,8 +9,8 @@ import { projects } from '../../../../entities/projects/index'
 import { stages } from '../../../../entities/stages/index'
 
 const stagesIn = gatherData(stages)
-const cardsIn = gatherCards(cards, projects, stages)
-console.log(cardsIn)
+const cardsIn = ref(gatherCards(cards, projects, stages))
+
 </script>
 <template>
   <div class="cards">
