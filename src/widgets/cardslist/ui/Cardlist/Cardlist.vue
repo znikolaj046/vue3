@@ -1,21 +1,18 @@
 <script setup>
 import { gatherData, gatherCards, sortCards, setProjectFilter } from '@/entities/api'
 import { Cardobject } from '@/widgets/cardobject'
-import { ref, toRefs, reactive, watch } from 'vue'
+import { ref, watchEffect } from 'vue'
 import draggable from 'vuedraggable'
 
 import { cards } from '../../../../entities/cards/index'
 import { projects } from '../../../../entities/projects/index'
 import { stages } from '../../../../entities/stages/index'
 
-const props = defineProps(['modelValue']);
-console.log(props)
-const filter = ''
+const filter = null
 
-watch(
-  () => props.modelValue,
-  () => { filter = props.modelValue }
-);
+watchEffect(() => {
+  filter.value = props.modelValue;
+});
 
 console.log(filter)
 
