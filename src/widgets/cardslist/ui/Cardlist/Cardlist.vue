@@ -9,9 +9,9 @@ import { projects } from '../../../../entities/projects/index'
 import { stages } from '../../../../entities/stages/index'
 
 const props = defineProps(['modelValue']);
-const { filter } = toRefs(props);
+const { filter } = toRefs(props.modelValue);
 
-console.log(props)
+console.log(filter)
 
 const stagesIn = gatherData(stages)
 const cardsIn = ref(gatherCards(cards, projects, stages))
