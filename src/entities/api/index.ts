@@ -69,8 +69,8 @@ export function gatherData(stages: Array<Stage>) {
   return stages
 }
 
-export function gatherCards(cards: Array<Cards>, projects: Array<Project>, stages: Array<Stage>, filter: string) {
-  console.log(filter)
+export function gatherCards(cards: Array<Cards>, projects: Array<Project>, stages: Array<Stage>, filter: Object) {
+  console.log(filter.modelValue)
   for (let i = 0; i < cards.length; i++) {
     if (cards[i].project === false) continue
 
