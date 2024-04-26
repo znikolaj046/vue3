@@ -6,6 +6,7 @@ import { Cardlist } from '@/widgets/cardslist'
 const filter = ref('')
 function onChange(event) {
     filter.value = event.target.value
+    console.log(filter.value)
 }
 
 </script>
@@ -28,7 +29,7 @@ function onChange(event) {
           <div><button class="btn">Сохранить изменения</button></div>
         </div>
       </header>
-      <Cardlist :filter="filter"></Cardlist>
+      <Cardlist v-model="filter"></Cardlist>
     </section>
   </main>
   <!--modal v-show="isModalVisible" @close="closeModal" /-->
