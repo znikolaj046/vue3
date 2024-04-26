@@ -3,9 +3,10 @@ import { projects } from '@/entities/projects/index'
 import { ref, provide } from 'vue'
 import { Cardlist } from '@/widgets/cardslist'
 
-const filter = ''
+const filter = ref('')
 function onChange(event) {
-    this.filter = event.target.value
+    filter.value = event.target.value
+    console.log(filter)
 }
 
 </script>
@@ -28,7 +29,7 @@ function onChange(event) {
           <div><button class="btn">Сохранить изменения</button></div>
         </div>
       </header>
-      <Cardlist :filter="filter"></Cardlist>
+      <Cardlist v-model="filter"></Cardlist>
     </section>
   </main>
   <!--modal v-show="isModalVisible" @close="closeModal" /-->
