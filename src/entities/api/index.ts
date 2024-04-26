@@ -2,6 +2,7 @@ import { type Cards } from '../cards'
 import { type Project } from '../projects'
 import { type Stage } from '../stages'
 
+
 function getCardProjectFilter(project: string) {
   return function (element: Cards) {
     if (element.project) {
