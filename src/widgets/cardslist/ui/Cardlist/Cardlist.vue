@@ -1,12 +1,17 @@
 <script setup>
 import { gatherData, gatherCards, sortCards, setProjectFilter } from '@/entities/api'
 import { Cardobject } from '@/widgets/cardobject'
-import { ref } from 'vue'
+import { ref, defineProps, reactive } from 'vue'
 import draggable from 'vuedraggable'
 
 import { cards } from '../../../../entities/cards/index'
 import { projects } from '../../../../entities/projects/index'
 import { stages } from '../../../../entities/stages/index'
+
+const props = defineProps(['filter']);
+const { filter } = toRefs(props);
+
+console.log(filter)
 
 const stagesIn = gatherData(stages)
 const cardsIn = ref(gatherCards(cards, projects, stages))
