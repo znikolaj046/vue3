@@ -1,7 +1,7 @@
 <script setup>
 import { gatherData, gatherCards, sortCards, setProjectFilter } from '@/entities/api'
 import { Cardobject } from '@/widgets/cardobject'
-import { ref, defineProps, reactive } from 'vue'
+import { ref, toRefs, reactive } from 'vue'
 import draggable from 'vuedraggable'
 
 import { cards } from '../../../../entities/cards/index'
