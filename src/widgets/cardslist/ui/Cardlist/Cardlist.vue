@@ -13,8 +13,9 @@ const cardsIn = ref(gatherCards(cards, projects, stages))
 
 const emit = defineEmits(["sorting"])
 
-function SortCards(index, direction) {   
-  sortCards(cardsIn[index], index, direction);
+function SortCards(cardsIn, direction) {   
+  console.log(cardsIn)
+  sortCards(cardsIn, direction);
 }
 
 </script>
@@ -22,10 +23,10 @@ function SortCards(index, direction) {
   <div class="cards">
     <div class="card" :key="stage.id" v-for="(stage, index) in stagesIn">
       <div class="station_header">
-        <div>{{ stage.name }} {{ index }}</div>
+        <div>{{ stage.name }}</div>
         <div>
-          <a v-on:click="SortCards(index, -1)"><img src="/images/adown.svg" /></a
-          ><a v-on:click="SortCards(index, 1)"><img src="/images/aup.svg" /></a>
+          <a href="javascript:;;" v-on:click="SortCards(cardsIn[index], 1)"><img src="/images/adown.svg" /></a
+          ><a href="javascript:;;" v-on:click="SortCards(cardsIn[index], -1)"><img src="/images/aup.svg" /></a>
         </div>
       </div>
       <draggable
