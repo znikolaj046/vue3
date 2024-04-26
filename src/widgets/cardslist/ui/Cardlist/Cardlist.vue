@@ -11,7 +11,7 @@ import { stages } from '../../../../entities/stages/index'
 const props = defineProps(['modelValue']);
 
 const stagesIn = gatherData(stages)
-const cardsIn = ref(gatherCards(cards, projects, stages, modelValue))
+const cardsIn = ref(gatherCards(cards, projects, stages, props.modelValue))
 
 function SortCards(cardsIn, direction) {   
   sortCards(cardsIn, direction);
