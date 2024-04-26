@@ -6,7 +6,6 @@ import { Cardlist } from '@/widgets/cardslist'
 const filter = ref('')
 function onChange(event) {
     filter.value = event.target.value
-    console.log(filter.value)
 }
 
 </script>

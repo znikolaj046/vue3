@@ -8,7 +8,7 @@ import { cards } from '../../../../entities/cards/index'
 import { projects } from '../../../../entities/projects/index'
 import { stages } from '../../../../entities/stages/index'
 
-const props = defineProps(['filter']);
+const props = defineProps(['modelValue']);
 const { filter } = toRefs(props);
 
 console.log(filter)
