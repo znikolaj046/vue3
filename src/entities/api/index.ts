@@ -2,8 +2,6 @@ import { type Cards } from '../cards'
 import { type Project } from '../projects'
 import { type Stage } from '../stages'
 
-//export const getData = function () {
-
 function getCardProjectFilter(project: string) {
   return function (element: Cards) {
     if (element.project) {
@@ -69,7 +67,7 @@ export function gatherData(stages: Array<Stage>) {
   return stages
 }
 
-export function gatherCards(cards: Array<Cards>, projects: Array<Project>, stages: Array<Stage>, filter: Object) {
+export function gatherCards(cards: Array<Cards>, projects: Array<Project>, stages: Array<Stage>) {
   console.log(filter.modelValue)
   for (let i = 0; i < cards.length; i++) {
     if (cards[i].project === false) continue
