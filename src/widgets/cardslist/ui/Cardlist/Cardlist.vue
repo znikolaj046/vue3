@@ -1,15 +1,19 @@
 <script setup>
 import { gatherData, gatherCards, sortCards, setProjectFilter } from '@/entities/api'
 import { Cardobject } from '@/widgets/cardobject'
-import { ref, toRefs, reactive } from 'vue'
+import { ref, toRefs, reactive, watch } from 'vue'
 import draggable from 'vuedraggable'
 
 import { cards } from '../../../../entities/cards/index'
 import { projects } from '../../../../entities/projects/index'
 import { stages } from '../../../../entities/stages/index'
 
-const props = defineProps(['modelValue']);
-const { filter } = toRefs(props.modelValue);
+const filter = ''
+
+watch(
+  () => props.modelValue,
+  () => { filter = props.modelValue }
+);
 
 console.log(filter)
 
@@ -21,7 +25,7 @@ function SortCards(cardsIn, direction) {
 }
 
 </script>
-<template>{{filter}}
+<template>
   <div class="cards">
     <div class="card" :key="stage.id" v-for="(stage, index) in stagesIn">
       <div class="station_header">
