@@ -5,8 +5,7 @@ import { Cardlist } from '@/widgets/cardslist'
 
 const filter = ''
 function onChange(event) {
-    const evt = event.target.value    
-    return evt
+    this.filter = event.target.value
 }
 
 </script>
@@ -19,7 +18,7 @@ function onChange(event) {
         <div class="right_head">
           <div>Проект:</div>
           <div>
-            <select @change="filter = onChange($event)">
+            <select @change="onChange($event)">
               <option :value="project.code" :key="project.code" v-for="project in projects">
                 {{ project.name }}
               </option>

@@ -12,7 +12,10 @@ const stagesIn = gatherData(stages)
 const cardsIn = ref(gatherCards(cards, projects, stages))
 
 const props = defineProps(['filter']);
+console.log(props)
+console.log(props.filter)
 const filter = ref(props.filter);
+console.log(filter)
 
 function SortCards(cardsIn, direction) {   
   sortCards(cardsIn, direction);
