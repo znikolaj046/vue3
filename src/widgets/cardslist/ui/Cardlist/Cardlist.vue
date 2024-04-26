@@ -8,12 +8,10 @@ import { cards } from '../../../../entities/cards/index'
 import { projects } from '../../../../entities/projects/index'
 import { stages } from '../../../../entities/stages/index'
 
-const stagesIn = gatherData(stages)
-const cardsIn = ref(gatherCards(cards, projects, stages))
-
 const props = defineProps(['modelValue']);
 
-console.log(props)
+const stagesIn = gatherData(stages)
+const cardsIn = ref(gatherCards(cards, projects, stages, modelValue))
 
 function SortCards(cardsIn, direction) {   
   sortCards(cardsIn, direction);
@@ -21,7 +19,7 @@ function SortCards(cardsIn, direction) {
 
 </script>
 <template>
-  <div class="cards">{{modelValue}}
+  <div class="cards">
     <div class="card" :key="stage.id" v-for="(stage, index) in stagesIn">
       <div class="station_header">
         <div>{{ stage.name }}</div>

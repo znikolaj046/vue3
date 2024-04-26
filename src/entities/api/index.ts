@@ -69,7 +69,7 @@ export function gatherData(stages: Array<Stage>) {
   return stages
 }
 
-export function gatherCards(cards: Array<Cards>, projects: Array<Project>, stages: Array<Stage>) {
+export function gatherCards(cards: Array<Cards>, projects: Array<Project>, stages: Array<Stage>, filter: string) {
   for (let i = 0; i < cards.length; i++) {
     if (cards[i].project === false) continue
 
