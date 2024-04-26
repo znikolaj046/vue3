@@ -28,7 +28,7 @@ function onChange(event) {
           <div><button class="btn">Сохранить изменения</button></div>
         </div>
       </header>
-      <Cardlist v-model="filter"></Cardlist>
+      <Cardlist :filter="filter"></Cardlist>
     </section>
   </main>
   <!--modal v-show="isModalVisible" @close="closeModal" /-->
