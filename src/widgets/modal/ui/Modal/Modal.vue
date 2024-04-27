@@ -1,83 +1,63 @@
-<script>
-export default {
-  name: 'modal',
-
-  methods: {
-    close() {
-      this.$emit('close')
-    }
-  }
-}
+<script setup>
+const props = defineProps(['question'])
+const emit = defineEmits(['confirm', 'cancel'])
 </script>
+
 <template>
-  <div class="modal-backdrop" @click="close">
-    <div class="modal">
-      <slot name="header"> </slot>
-
-      <slot name="body"> </slot>
-
-      <slot name="footer"> </slot>
+  <div class="modal-container">
+    <div class="modal-body">
+      <span class="modal-close" @click="emit('close')">🗙</span>
+      <h2>{{ question }}</h2>
+      <div class="modal-action">
+        <button class="modal-button" @click="emit('confirm')">Confirm</button>
+        <button class="modal-button" @click="emit('cancel')">Cancel</button>
+      </div>
     </div>
   </div>
 </template>
-
 <style>
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+.modal-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #cececeb5;
 }
-
-.modal {
-  background: #ffffff;
-  box-shadow: 2px 2px 20px 1px;
-  overflow-x: auto;
+.modal-body {
+  background-color: #fff;
+  border: 2px solid #74a2cf;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px 40px;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
 }
-
-.modal-header,
-.modal-footer {
-  padding: 15px;
+.modal-action {
   display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: center;
 }
-
-.modal-header {
-  border-bottom: 1px solid #eeeeee;
-  color: #4aae9b;
-  justify-content: space-between;
-}
-
-.modal-footer {
-  border-top: 1px solid #eeeeee;
-  justify-content: flex-end;
-}
-
-.modal-body {
-  position: relative;
-  padding: 20px 10px;
-}
-
-.btn-close {
-  border: none;
-  font-size: 20px;
-  padding: 20px;
+.modal-button {
   cursor: pointer;
-  font-weight: bold;
-  color: #4aae9b;
-  background: transparent;
+  height: 30px;
+  padding: 0 25px;
+  border: 2px solid #74a2cf;
+  border-radius: 5px;
+  background-color: #80b2e4;
+  color: #fff;
 }
-
-.btn-green {
-  color: white;
-  background: #4aae9b;
-  border: 1px solid #4aae9b;
-  border-radius: 2px;
+.modal-close {
+  cursor: pointer;
+  position: relative;
+  align-self: end;
+  right: -33px;
+  top: -17px;
 }
 </style>

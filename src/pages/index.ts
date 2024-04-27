@@ -7,8 +7,8 @@ export const routes: Array<RouteRecordRaw> = [
     component: () => import('./main/ui/MainPage.vue')
   },
   {
-    path: '/add',
-    name: 'add',
-    component: () => import('./register/index')
+    path: '/register',
+    name: 'register',
+    component: () => import('./register/ui/RegisterPage.vue')
   }
 ]

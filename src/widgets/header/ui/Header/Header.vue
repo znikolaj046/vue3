@@ -1,14 +1,12 @@
 <script setup>
 import { projects } from '@/entities/projects/index'
-import { ref, provide } from 'vue'
+import { ref } from 'vue'
 import { Cardlist } from '@/widgets/cardslist'
 
 const filter = ref('')
 function onChange(event) {
-    filter.value = event.target.value
-    //alert(filter.value)
+  filter.value = event.target.value
 }
-
 </script>
 
 <template>
@@ -20,17 +18,17 @@ function onChange(event) {
           <div>Проект:</div>
           <div>
             <select @change="onChange($event)">
+              <option>-</option>
               <option :value="project.code" :key="project.code" v-for="project in projects">
                 {{ project.name }}
               </option>
             </select>
           </div>
-          <div><button class="btn">Добавить карточку</button></div>
+          <div><a href="/register" class="btn">Добавить карточку</a></div>
           <div><button class="btn">Сохранить изменения</button></div>
         </div>
       </header>
-      <Cardlist v-model="filter.value"></Cardlist>
+      <Cardlist v-model="filter"></Cardlist>
     </section>
   </main>
-  <!--modal v-show="isModalVisible" @close="closeModal" /-->
 </template>

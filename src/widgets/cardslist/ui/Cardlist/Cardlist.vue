@@ -1,6 +1,7 @@
 <script setup>
 import { gatherData, gatherCards, sortCards, setProjectFilter } from '@/entities/api'
 import { Cardobject } from '@/widgets/cardobject'
+import { Modal } from '@/widgets/modal'
 import { ref, watchEffect } from 'vue'
 import draggable from 'vuedraggable'
 
@@ -8,21 +9,24 @@ import { cards } from '../../../../entities/cards/index'
 import { projects } from '../../../../entities/projects/index'
 import { stages } from '../../../../entities/stages/index'
 
-const filter = null
+const props = defineProps(['modelValue'])
+let filter = ref(0)
+let cardsIn = ref(0)
 
 watchEffect(() => {
-  filter.value = props.modelValue;
-});
-
-console.log(filter)
+  if (props.modelValue !== undefined) {
+    filter.value = props.modelValue
+    cardsIn = ref(gatherCards(cards, projects, stages, filter.value))
+  } else {
+    cardsIn = ref(gatherCards(cards, projects, stages, ''))
+  }
+})
 
 const stagesIn = gatherData(stages)
-const cardsIn = ref(gatherCards(cards, projects, stages))
 
-function SortCards(cardsIn, direction) {   
-  sortCards(cardsIn, direction);
+function SortCards(cardsIn, direction) {
+  sortCards(cardsIn, direction)
 }
-
 </script>
 <template>
   <div class="cards">
@@ -30,16 +34,14 @@ function SortCards(cardsIn, direction) {
       <div class="station_header">
         <div>{{ stage.name }}</div>
         <div>
-          <a href="javascript:;;" v-on:click="SortCards(cardsIn[index], 1)"><img src="/images/adown.svg" /></a
-          ><a href="javascript:;;" v-on:click="SortCards(cardsIn[index], -1)"><img src="/images/aup.svg" /></a>
+          <a href="javascript:;;" v-on:click="SortCards(cardsIn[index], 1)"
+            ><img src="/images/adown.svg" /></a
+          ><a href="javascript:;;" v-on:click="SortCards(cardsIn[index], -1)"
+            ><img src="/images/aup.svg"
+          /></a>
         </div>
       </div>
-      <draggable
-        class="list-group"
-        :itemKey="stage.code"
-        group="people"
-        v-model="cardsIn[index]"
-      >
+      <draggable class="list-group" :itemKey="stage.code" group="people" v-model="cardsIn[index]">
         <template #item="{ element: card }">
           <li class="card_object list-group-item" :key="card.code">
             <Cardobject
@@ -52,8 +54,9 @@ function SortCards(cardsIn, direction) {
         </template>
       </draggable>
       <div class="card_footer">
-        <a href="javascript:;;">Добавить</a>
+        <a href="javascript:;;" @click="showModal">Добавить</a>
       </div>
     </div>
   </div>
+  <Modal v-show="isModalVisible" @close="closeModal" />
 </template>

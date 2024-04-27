@@ -2,7 +2,6 @@ import { type Cards } from '../cards'
 import { type Project } from '../projects'
 import { type Stage } from '../stages'
 
-
 function getCardProjectFilter(project: string) {
   return function (element: Cards) {
     if (element.project) {
@@ -47,18 +46,18 @@ function compareDesc(a: Cards, b: Cards) {
 
 export function setProjectFilter(cards: Array<Cards>, project: string) {
   //for (let i = 0; i < stages.length; i++) {
-  const cardsFiltered = cards.filter(getCardProjectFilter(project))    
+  const cardsFiltered = cards.filter(getCardProjectFilter(project))
   //}
   return cardsFiltered
 }
 
-export function sortCards(cards: Array<Cards>, direction:number){
-  console.log(cards) 
+export function sortCards(cards: Array<Cards>, direction: number) {
+  console.log(cards)
   if (direction == 1) {
     cards.sort(compareAsc)
   } else {
     cards.sort(compareDesc)
-  }  
+  }
   return cards
 }
 
@@ -68,7 +67,16 @@ export function gatherData(stages: Array<Stage>) {
   return stages
 }
 
-export function gatherCards(cards: Array<Cards>, projects: Array<Project>, stages: Array<Stage>) {
+export function gatherCards(
+  cards: Array<Cards>,
+  projects: Array<Project>,
+  stages: Array<Stage>,
+  filter: string
+) {
+  if (filter.length > 0) {
+    cards = setProjectFilter(cards, filter)
+  }
+
   for (let i = 0; i < cards.length; i++) {
     if (cards[i].project === false) continue
 
