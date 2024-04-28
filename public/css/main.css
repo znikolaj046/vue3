@@ -37,6 +37,7 @@ input {
 }
 
 .btn {
+  text-decoration: none;
   padding: 8px 20px;
   color: #fff;
   text-align: center;
@@ -82,7 +83,7 @@ main {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
   align-items: center;
   max-width: 1340px;
 }
@@ -228,4 +229,120 @@ section {
 
 .card_object {
   margin-bottom: 10px;
+}
+
+.form_data {
+  border-radius: 4px;
+  background: #fff;
+  padding: 30px;
+}
+
+.form_data h2 {
+  color: #38393d;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.subheader {
+  color: #71747c;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+label {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.v380 {
+  width: 380px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  max-width: 80%;
+  border-radius: 8px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the transparency as needed */
+  z-index: 1; /* Make sure the overlay is above other elements */
+  pointer-events: auto; /* Enable pointer events on the overlay */
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0);
+}
+
+.modal-content {
+  position: relative;
+}
+
+.modal-content h2 {
+  margin: 0;
+  color: #38393d;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.btn-div {
+  text-align: center;
+  margin-top: 40px;
+}
+
+select {
+  padding: 8px;
+  color: #000;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 4px;
+  background: #f0f3f8;
+  border: none;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.button {
+  cursor: pointer;
 }

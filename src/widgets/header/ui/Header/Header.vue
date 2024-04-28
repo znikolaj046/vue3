@@ -2,10 +2,16 @@
 import { projects } from '@/entities/projects/index'
 import { ref } from 'vue'
 import { Cardlist } from '@/widgets/cardslist'
+import { store } from '@/entities/store'
 
 const filter = ref('')
 function onChange(event) {
   filter.value = event.target.value
+}
+
+function saveData() {
+  console.log(store.outCards)
+  store.saveData()
 }
 </script>
 
@@ -25,7 +31,7 @@ function onChange(event) {
             </select>
           </div>
           <div><a href="/register" class="btn">Добавить карточку</a></div>
-          <div><button class="btn">Сохранить изменения</button></div>
+          <div><button @click="saveData" class="btn">Сохранить изменения</button></div>
         </div>
       </header>
       <Cardlist v-model="filter"></Cardlist>
